@@ -1,86 +1,66 @@
 'use client'
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FaStar, FaHeart, FaCheck } from 'react-icons/fa';
 
-const skillsData = [
-  {
-    name: 'Habilidade 1',
-    description: 'Descrição da habilidade 1. Esta é a descrição principal da habilidade.',
-    additionalText: 'Texto adicional para a habilidade 1. Mais detalhes podem ser fornecidos aqui.',
-    benefits: [
-      { icon: <FaStar />, text: 'Benefício 1' },
-      { icon: <FaHeart />, text: 'Benefício 2' },
-      { icon: <FaCheck />, text: 'Benefício 3' }
-    ]
-  },
-  {
-    name: 'Habilidade 2',
-    description: 'Descrição da habilidade 2. Esta é a descrição principal da habilidade.',
-    additionalText: 'Texto adicional para a habilidade 2. Mais detalhes podem ser fornecidos aqui.',
-    benefits: [
-      { icon: <FaStar />, text: 'Benefício 1' },
-      { icon: <FaHeart />, text: 'Benefício 2' }
-    ]
-  },
-  // Adicione mais habilidades conforme necessário
-];
+// Mock de dados para os produtos
+// const productsData = [
+//   {
+//     id: 1,
+//     title: 'Produto 1',
+//     description: 'Descrição do Produto 1. Esta é a descrição principal do produto.',
+//     details: 'Detalhes adicionais do Produto 1. Mais informações podem ser fornecidas aqui.',
+//     benefits: [
+//       { icon: <FaStar />, text: 'Benefício 1' },
+//       { icon: <FaHeart />, text: 'Benefício 2' },
+//       { icon: <FaCheck />, text: 'Benefício 3' }
+//     ]
+//   },
+//   {
+//     id: 2,
+//     title: 'Produto 2',
+//     description: 'Descrição do Produto 2. Esta é a descrição principal do produto.',
+//     details: 'Detalhes adicionais do Produto 2. Mais informações podem ser fornecidas aqui.',
+//     benefits: [
+//       { icon: <FaStar />, text: 'Benefício 1' },
+//       { icon: <FaHeart />, text: 'Benefício 2' }
+//     ]
+//   },
+//   // Adicione mais produtos conforme necessário
+// ];
 
 const Skills = () => {
-  const [flippedIndex, setFlippedIndex] = useState(-1);
+  // const [isFlipped, setIsFlipped] = useState(false);
+  // const [activeProduct, setActiveProduct] = useState(null);
 
-  const handleMouseEnter = (index) => {
-    setFlippedIndex(index);
-  };
+  // // Função para lidar com o mouse entrar no card
+  // const handleMouseEnter = (productId) => {
+  //   setIsFlipped(true);
+  //   setActiveProduct(productId);
+  // };
 
-  const handleMouseLeave = () => {
-    setFlippedIndex(-1);
-  };
+  // // Função para lidar com o mouse sair do card
+  // const handleMouseLeave = () => {
+  //   setIsFlipped(false);
+  //   setActiveProduct(null);
+  // };
 
   return (
-    <>
-      <span id="about"></span>
-
-      <div className="pt-20">
-        <h1 className='text-xl md:text-3xl lg:text-5xl font-semibold text-center'>Como ganhar pontos</h1>
-        <hr className='mx-20 border border-yellow-700 mt-4'></hr>
-        <div className="px-10">
-          <div className="py-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 sm:gap-3 sm:px-10 md:gap-6 md:px-6 xl:gap-10 xl:px-20">
-            {skillsData.map((skill, index) => (
-              <div
-                key={skill.name}
-                className={`card group text-dark space-y-3 p-4 rounded-md bg-white duration-300 transition-all border-2 hover:border-green-600 shadow-md relative overflow-hidden ${
-                  flippedIndex === index ? 'hover:rotate-y-180' : ''
-                }`}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <div className="front absolute w-full h-full backface-hidden">
-                  <div>{skill.icon}</div>
-                  <h1 className="md:text-2xl font-bold">{skill.name}</h1>
-                  <p>{skill.description}</p>
-                </div>
-                <div className="back absolute w-full h-full backface-hidden rotate-y-180">
-                  <div className="py-4">
-                    <h1 className="md:text-2xl font-bold">{skill.name}</h1>
-                    <p>{skill.additionalText}</p>
-                    <ul>
-                      {skill.benefits &&
-                        skill.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-center text-gray-800">
-                            {benefit.icon}
-                            <span className="ml-2">{benefit.text}</span>
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
+    <div className='flex min-h-screen flex-col justify-center bg-slate-100 '>
+      <div className='group h-96 w-96 [perspective:1000px]'>
+        <div className='relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] [backface-visibility:hidden]'>
+          <div>
+            <h1>Jane</h1>
+            <p>programapher</p>
+            <button>ntrar</button>
+          </div>
+          <div className='absolute inset-0'>
+            <img className='h-full w-full rounded-xl object-cover shadow-black/40 '></img>
+            <div className='absolute.inset-0 h-full rounded-xl bg-black px-12 text-center text-slate-200'></div>
           </div>
         </div>
       </div>
-    </>
+      </div>
   );
-};
-
+}
 export default Skills;
+   
